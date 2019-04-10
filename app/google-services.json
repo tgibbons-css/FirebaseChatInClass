@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "485395658621",
+    "firebase_url": "https://fir-chatinclass.firebaseio.com",
+    "project_id": "fir-chatinclass",
+    "storage_bucket": "fir-chatinclass.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485395658621:android:ec2dc25bfc5a6442",
+        "android_client_info": {
+          "package_name": "edu.css.firebasechatinclass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "485395658621-ujansgv4tg169173ce5pmh3vta5hk72e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.css.firebasechatinclass",
+            "certificate_hash": "406db020034562bb536bcb5ac8df7136e966308f"
+          }
+        },
+        {
+          "client_id": "485395658621-g7pf862iju931oivkrh2ro0c1tdt85km.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtMKmJ8cZQ_zXTJG3giPhJci82zLMF-wI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "485395658621-g7pf862iju931oivkrh2ro0c1tdt85km.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

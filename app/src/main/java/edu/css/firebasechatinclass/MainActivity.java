@@ -1,0 +1,74 @@
+package edu.css.firebasechatinclass;
+
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button btnPost;
+    EditText etMessage;
+    TextView tvMsgList;
+    DatabaseReference myRef;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        btnPost = findViewById(R.id.buttonPost);
+        etMessage = findViewById(R.id.editTextMessage);
+        tvMsgList = findViewById(R.id.textViewMsgList);
+
+        // Set up database reference
+        myRef = FirebaseDatabase.getInstance().getReference("FireChat");
+
+        String key = myRef.push().getKey();
+        myRef.child(key).setValue("Hi this is Tom");
+
+        String key2 = myRef.push().getKey();
+        myRef.child(key2).setValue("What is the weather like?");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //String msg = dataSnapshot.getValue(String.class);
+                for (DataSnapshot msgSnapshot : dataSnapshot.getChildren()) {
+                    String msg = msgSnapshot.getValue(String.class);
+                    tvMsgList.setText(msg);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        btnPost.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // ---- Get a new database key for the vote
+                String key = myRef.push().getKey();
+                // ---- set up the vote
+                String msgText = etMessage.getText().toString();
+                // ---- write the message to Firebase
+                myRef.child(key).setValue(msgText);
+                etMessage.setText("");           // clear out the all votes text box
+            }
+        });
+
+
+    }
+}
