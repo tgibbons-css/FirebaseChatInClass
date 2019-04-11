@@ -33,19 +33,16 @@ public class MainActivity extends AppCompatActivity {
         // Set up database reference
         myRef = FirebaseDatabase.getInstance().getReference("FireChat");
 
-        String key = myRef.push().getKey();
-        myRef.child(key).setValue("Hi this is Tom");
-
-        String key2 = myRef.push().getKey();
-        myRef.child(key2).setValue("What is the weather like?");
-
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //String msg = dataSnapshot.getValue(String.class);
+                tvMsgList.setText("");           // clear out the all messages on the list
                 for (DataSnapshot msgSnapshot : dataSnapshot.getChildren()) {
                     String msg = msgSnapshot.getValue(String.class);
-                    tvMsgList.setText(msg);
+                    tvMsgList.setText(msg+ "\n" + tvMsgList.getText());
+                    //tvMsgList.append(msg);
+                    //tvMsgList.append("\n");
 
                 }
             }
@@ -63,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
                 String key = myRef.push().getKey();
                 // ---- set up the vote
                 String msgText = etMessage.getText().toString();
+                etMessage.setText("");           // clear out the all votes text box
                 // ---- write the message to Firebase
                 myRef.child(key).setValue(msgText);
-                etMessage.setText("");           // clear out the all votes text box
+
             }
         });
 

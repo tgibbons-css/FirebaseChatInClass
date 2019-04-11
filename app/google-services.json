@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "485395658621-rd36a1q1vsgjafgcgqa52lil10vjifjm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.css.firebasechatinclass",
+            "certificate_hash": "be12f61a409233daa0c0e98e56f78c46c595a1d2"
+          }
+        },
+        {
           "client_id": "485395658621-g7pf862iju931oivkrh2ro0c1tdt85km.apps.googleusercontent.com",
           "client_type": 3
         }
